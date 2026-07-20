@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Debate Agent v3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🤖 AI Debate Agent v3</h1>
+    <span id="connectionStatus" style="font-family:'Space Mono'; font-size:0.8rem; color:var(--success);">● Live</span>
+  </header>
+
+  <div class="main-container">
+    <!-- Status Panel -->
+    <div class="status-panel" id="statusPanel">
+      <div class="agent-card" id="geminiCard">
+        <div class="agent-icon">✨</div>
+        <div class="agent-info">
+          <h4>Gemini</h4>
+          <span class="agent-provider">Google AI</span>
+          <span class="status-badge" id="geminiStatus">Checking...</span>
+        </div>
+        <div class="agent-limits">1M ctx | 1500 req/day</div>
+      </div>
+      <div class="agent-card" id="groqCard">
+        <div class="agent-icon">⚡</div>
+        <div class="agent-info">
+          <h4>Groq</h4>
+          <span class="agent-provider">Groq Cloud</span>
+          <span class="status-badge" id="groqStatus">Checking...</span>
+        </div>
+        <div class="agent-limits">128K ctx | 30 RPM</div>
+      </div>
+      <div class="agent-card" id="mistralCard">
+        <div class="agent-icon">🌪️</div>
+        <div class="agent-info">
+          <h4>Mistral</h4>
+          <span class="agent-provider">Mistral AI</span>
+          <span class="status-badge" id="mistralStatus">Checking...</span>
+        </div>
+        <div class="agent-limits">256K ctx | Free Tier</div>
+      </div>
+      <div class="agent-card" id="openrouterCard">
+        <div class="agent-icon">🧭</div>
+        <div class="agent-info">
+          <h4>OpenRouter</h4>
+          <span class="agent-provider">OpenRouter.ai</span>
+          <span class="status-badge" id="openrouterStatus">Checking...</span>
+        </div>
+        <div class="agent-limits">Free model pool | ~20 RPM</div>
+      </div>
+      <div class="agent-card" id="telegramCard">
+        <div class="agent-icon">📨</div>
+        <div class="agent-info">
+          <h4>Telegram Delivery</h4>
+          <span class="agent-provider">Auto-send results</span>
+          <span class="status-badge" id="telegramStatus">Checking...</span>
+        </div>
+        <div class="agent-limits">চ্যাটে অটো-নোটিফিকেশন</div>
+      </div>
+    </div>
+
+    <!-- Chat Box -->
+    <div class="chat-box">
+      <h3>প্রশ্ন বা বিতর্ক বিষয় লিখুন</h3>
+      <div class="input-row">
+        <input type="text" id="questionInput" placeholder="যেকোনো প্রশ্ন বা টপিক লিখুন (যেমন: কৃত্রিম বুদ্ধিমত্তা কি মানুষের চাকরি কেড়ে নেবে?)..." onkeypress="if(event.key==='Enter') askQuestion()">
+        <button class="btn-primary" onclick="askQuestion()">DEBATE</button>
+      </div>
+      <div id="statusMessage" style="font-family:'Space Mono'; font-size:0.85rem; color:var(--accent-color); display:none;"></div>
+    </div>
+
+    <!-- Results Area -->
+    <div class="results-area" id="resultsArea">
+      <h3>🎯 Final Consensus & Debate Result</h3>
+      <div id="agreementBanner"></div>
+      <div class="consensus-content" id="consensusText"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>AI Debate Agent v3 • Gemini, Groq, Mistral, OpenRouter & Leader Consensus Engine</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax5/libs/socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

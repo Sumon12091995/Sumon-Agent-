@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: sumon-agent
+    env: python
+    plan: free
+    buildCommand: "pip install --upgrade pip && pip install -r requirements.txt"
+    startCommand: "python backend/app.py"
